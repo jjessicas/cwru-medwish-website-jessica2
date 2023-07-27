@@ -1,13 +1,29 @@
-import React from "react";
-import { Card, CardMedia, Typography, Divider, Grid, Box } from '@mui/material';
+import React, { useState, useEffect } from "react";
+import ProjectCard from './ProjectCard';
+import { Card, CardMedia, Typography, Divider, Box} from '@mui/material';
 import ProjectImage from './images/ProjectImage.png';
-import Biosensor from './images/Biosensor.png';
-import Documentation from './images/Documentation.png';
-import Placeholder1 from './images/Placeholder1.png';
-import Placeholder2 from './images/Placeholder2.png';
 
+function ProjectsPage() { 
+  const [projects, setProjects] = useState([]);
 
-function ProjectsPage() {
+  const convertDriveLink = (url) => {
+    let imageId = url.split('/').slice(-2)[0];
+    return `https://drive.google.com/uc?export=view&id=${imageId}`;
+  };
+
+  useEffect(() => {
+    fetch("https://sheetdb.io/api/v1/0ijz8ghgf80b8")
+      .then(response => response.json())
+      .then(data => {
+        const convertedData = data.map(project => ({
+          ...project,
+          image_link: convertDriveLink(project.image_link),
+        }));
+        setProjects(convertedData);
+      })
+      .catch(err => console.error(err));
+  }, []);
+
   return (
     <div>
     {/* Project Image */}
@@ -28,124 +44,10 @@ function ProjectsPage() {
       </Typography>
     </Box>
     <Divider style={{ borderTopWidth: '1px', borderTopColor: 'gray', height: '0px', margin: '30px 0', color: 'white' }} />
-      
-      {/* Documentation */}
-      {/* Image on left*/}
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
-          <Card style={{ padding: "76px", boxShadow : "none"}}>
-            <CardMedia 
-              component= "img"
-              alt= "Documentation"
-              image= { Documentation }
-              style = {{opacity: 1, zIndex: -1}}
-            />
-            </Card>
-        </Grid>
-        {/* Text on right */}
-        <Grid item xs={12} md={6}>
-          <Card style={{ padding: "76px", boxShadow : "none"}}>
-          <Box display="flex" alignItems="center" mb={2}>
-              <Typography variant="h1" component="div" style={{ color: "#22495F", fontWeight: "bold" }}>
-              Documentation
-            </Typography>
-            <Divider flexItem style={{ flexGrow: 1, marginLeft: "16px", height: '50%', alignSelf: 'center', borderTopWidth: '2px', borderColor: "black"}} />
-          </Box>
-          <Typography variant="h5" component="div">
-            <Box>The Boomerang Nebula, located roughly 5,000 light-years away from our solar system, has a temperature of 1 Kelvin (-272 °C or -460 °F) making it the coldest natural place in the universe humanity has discovered. First found in 1995 by astronomers in Chile, we have </Box>
-            </Typography>
-          </Card>
-        </Grid>
-      </Grid>
-
-      {/* Biosensor */}
-      {/* Text on left */}
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
-          <Card style={{ padding: "76px", boxShadow : "none"}}>
-          <Box display="flex" alignItems="center" mb={2}>
-              <Typography variant="h1" component="div" style={{ color: "#22495F", fontWeight: "bold" }}>
-              Biosensor
-            </Typography>
-            <Divider flexItem style={{ flexGrow: 1, marginLeft: "16px", height: '50%', alignSelf: 'center', borderTopWidth: '2px', borderColor: "black"}} />
-          </Box>
-          <Typography variant="h5" component="div">
-            <Box>The Boomerang Nebula, located roughly 5,000 light-years away from our solar system, has a temperature of 1 Kelvin (-272 °C or -460 °F) making it the coldest natural place in the universe humanity has discovered. First found in 1995 by astronomers in Chile, we have </Box>
-            </Typography>
-          </Card>
-        </Grid>
-        {/* Image on right */}
-        <Grid item xs={12} md={6}>
-          <Card style={{ padding: "76px", boxShadow : "none"}}>
-            <CardMedia 
-              component= "img"
-              alt= "Biosensor"
-              image= { Biosensor }
-              style = {{opacity: 1, zIndex: -1}}
-            />
-            </Card>
-        </Grid>
-      </Grid>
-
-      {/* Placeholder1 */}
-      {/* Image on left*/}
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
-          <Card style={{ padding: "76px", boxShadow : "none"}}>
-            <CardMedia 
-              component= "img"
-              alt= "Placeholder1"
-              image= { Placeholder1 }
-              style = {{opacity: 1, zIndex: -1}}
-            />
-            </Card>
-        </Grid>
-        {/* Text on right */}
-        <Grid item xs={12} md={6}>
-          <Card style={{ padding: "76px", boxShadow : "none"}}>
-          <Box display="flex" alignItems="center" mb={2}>
-              <Typography variant="h1" component="div" style={{ color: "#22495F", fontWeight: "bold" }}>
-              Placeholder1
-            </Typography>
-            <Divider flexItem style={{ flexGrow: 1, marginLeft: "16px", height: '50%', alignSelf: 'center', borderTopWidth: '2px', borderColor: "black"}} />
-          </Box>
-          <Typography variant="h5" component="div">
-            <Box>The Boomerang Nebula, located roughly 5,000 light-years away from our solar system, has a temperature of 1 Kelvin (-272 °C or -460 °F) making it the coldest natural place in the universe humanity has discovered. First found in 1995 by astronomers in Chile, we have </Box>
-            </Typography>
-          </Card>
-        </Grid>
-      </Grid>
-
-      {/* Placeholder2 */}
-      {/* Text on left */}
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
-          <Card style={{ padding: "76px", boxShadow : "none"}}>
-          <Box display="flex" alignItems="center" mb={2}>
-              <Typography variant="h1" component="div" style={{ color: "#22495F", fontWeight: "bold" }}>
-              Placeholder2
-            </Typography>
-            <Divider flexItem style={{ flexGrow: 1, marginLeft: "16px", height: '50%', alignSelf: 'center', borderTopWidth: '2px', borderColor: "black"}} />
-          </Box>
-          <Typography variant="h5" component="div">
-            <Box>The Boomerang Nebula, located roughly 5,000 light-years away from our solar system, has a temperature of 1 Kelvin (-272 °C or -460 °F) making it the coldest natural place in the universe humanity has discovered. First found in 1995 by astronomers in Chile, we have </Box>
-            </Typography>
-          </Card>
-        </Grid>
-        {/* Image on right */}
-        <Grid item xs={12} md={6}>
-          <Card style={{ padding: "76px", boxShadow : "none"}}>
-            <CardMedia 
-              component= "img"
-              alt= "Placeholder2" 
-              image= { Placeholder2 }
-              style = {{opacity: 1, zIndex: -1}}
-            />
-            </Card>
-        </Grid>
-      </Grid>
-      </div>
-
+      {projects.map((project, index) => (
+        <ProjectCard key={project.id} project={project} reverse={index % 2 !== 0} />
+      ))}
+    </div>
   );
 }
 

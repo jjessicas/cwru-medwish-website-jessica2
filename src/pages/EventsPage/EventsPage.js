@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardMedia, Typography, Divider, Box, IconButton, Grid, CardContent} from '@mui/material';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import { Card, CardMedia, Typography, Divider, Box, Grid, CardContent} from '@mui/material';
 import EventImage from './images/EventImage.png';
 import EventCard from './EventCard';
 
@@ -8,7 +7,7 @@ import EventCard from './EventCard';
 function EventsPage() {
 
   /**
-   * Fetch events from Google Sheets
+   * Fetch events from Google Sheets.
    */
   const [events, setEvents] = useState([]);
 
@@ -29,17 +28,17 @@ function EventsPage() {
   }, []);
 
   /**
-   * Group events by month
+   * Groups events by month.
    */
   const groupedEvents = events.reduce((acc, event) => {
-    const eventMonth = new Date(event.date).toLocaleString('default', { month: 'long' });
+    const eventMonth = new Date(event.date_time_start).toLocaleString('default', { month: 'long' });
     if (!acc[eventMonth]) {
       acc[eventMonth] = [];
     }
     acc[eventMonth].push(event);
     return acc;
   }, {});
-
+  
   return (
     <div>
     {/* Events Image */}
@@ -61,25 +60,6 @@ function EventsPage() {
     </Box>
       <Divider style={{ borderTopWidth: '1px', borderTopColor: 'gray', height: '0px', margin: '30px 0', color: 'white' }} />
 
-      {/* Add to Calendar Button */}
-      <Box display="flex" justifyContent="center">
-         <IconButton
-          sx={{
-            bgcolor: '#6599CC',
-            color: 'white',
-            borderRadius: '20px', // Adjust the value to control the roundness of the corners
-            '&:hover': {
-              bgcolor: '#478db8', // Adjust the hover color if needed
-            },
-          }}
-          variant="contained"
-          size="large"
-        >
-          <CalendarMonthIcon />
-          <Typography variant="body1">ADD TO GOOGLE CALENDAR</Typography>
-        </IconButton>
-      </Box>
-
       {/* Events */}
       {Object.entries(groupedEvents).map(([month, monthEvents]) => (
         <Card key={month} sx={{ mb: 4 }}>
@@ -90,9 +70,11 @@ function EventsPage() {
                 <Grid item key={event.id} xs={12} sm={6} md={4}>
                   <EventCard
                     name={event.name}
-                    date={event.date}
+                    start={event.date_time_start}
+                    end={event.date_time_end}
                     description={event.description}
-                    image={event['image link']}
+                    image={event['image_link']}
+                    location={event.location}
                   />
                 </Grid>
               ))}

@@ -3,6 +3,9 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
+import InstagramIcon from './instagram_icon.png';
+import CGIcon from './CG_icon.png';
+import FacebookIcon from './facebook_icon.png';
 
 function Footer() {
   return (
@@ -16,11 +19,17 @@ function Footer() {
       borderTop={1}
       borderColor="black"
     >
-      <Typography variant="body1" component="span" mx={2}>Instagram</Typography>
+      <a href="https://www.instagram.com/cwru.medwish/" target="_blank" rel="noopener noreferrer">
+        <img src={InstagramIcon} alt="Instagram" style={{ margin: '0 20px', height: "30px", objectFit: 'contain' }} />
+      </a>
       <Divider orientation="vertical" flexItem sx={{ borderColor: 'black' }} />
-      <Typography variant="body1" component="span" mx={2}>CampusGroups</Typography>
+      <a href="https://community.case.edu/medwish/home/" target="_blank" rel="noopener noreferrer">
+        <img src={CGIcon} alt="CampusGroups" style={{ margin: '0 20px', height: "30px", objectFit: 'contain' }} />
+      </a>
       <Divider orientation="vertical" flexItem sx={{ borderColor: 'black' }} />
-      <Typography variant="body1" component="span" mx={2}>Facebook</Typography>
+      <a href="https://www.facebook.com/CWRUMedWish/" target="_blank" rel="noopener noreferrer">
+        <img src={FacebookIcon} alt="Facebook" style={{ margin: '0 20px', height: "30px", objectFit: 'contain' }} />
+      </a>
     </Box>
   );
 }

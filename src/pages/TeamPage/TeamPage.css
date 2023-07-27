@@ -1,52 +1,54 @@
 .TeamPage {
     text-align: center;
     position: relative; 
-  }
+}
   
-  .TeamPage-header {
-    position: relative;
-  }
-  
+  /* Header Image & Title */ 
   .header-image {
     width: 100%;
     height: auto;
   }
-  
-  .image-container {
-    /*max-width: 100%;
-    height: auto;*/
-    position: relative; 
-    overflow: hidden; 
-  }
 
-  .image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-  }
-
-  .team-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center; /* Horizontally center the text */
-    margin: 16px 0; /* Add spacing above and below the text */
-    color: white; 
-    font-size: 40px; 
-  }
-
-  .horizontal-center-text {
-    text-align: center; /* Horizontally center the text */
-    margin: 16px 0; /* Add spacing above and below the text */
+  /* information blurb */ 
+  .info-text {
+    text-align: center; 
+    margin: 16px 0; 
     font-size: 20px; 
     margin-left: 100px; 
     margin-right: 100px; 
   }
+
+  .text {
+    font-size: 18px;
+    padding-left: 10%;
+    padding-right: 10%;
+    line-height: 1.4;
+  }
+
+  /* Members Grid */ 
+  .grid-title {
+    color: #00355E;
+    font-size: 30px; 
+    font-weight: bold; 
+    margin-right: 30px; 
+    margin-left: 3%; 
+  }
+
+  .grid-title-group {
+    width: 90%;
+    display: flex;
+    align-items: center; 
+    margin: 20px auto 0; 
+  }
   
+  .grid-title-line {
+    flex: .9; 
+    height: 1px;
+    background-color: #00355E;
+    ;
+  }  
+  
+  /* Extra */ 
   .spacer-line {
     text-align: center; 
     width: 95%;
@@ -57,4 +59,104 @@
 
   .spacer {
     height: 16px; 
+  }
+
+  /* Contact Us Title */ 
+  .contact-title {
+    color: #00355E;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .email-link {
+    color: black; 
+  }
+
+  /* Contact Us Email Form */ 
+  .card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .form-group {
+    width: 45%;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    justify-content: left;  
+    text-align: left;  
+  }
+
+  .form-group button {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .form-group input {
+    border: none; 
+    width: 100%;
+    padding: 5px;
+    border-color: transparent; 
+    outline: none; 
+    border-bottom: 1px solid black; 
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    width: 100%;
+    padding: 5px;
+  }  
+
+  .form-group-message {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: auto; 
+  }
+
+  .form-group-message label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+
+  .form-group-message button {
+    background-color: #6599CC;
+    color: white;
+    border: none;
+    padding: 2% 2%; 
+    border-radius: 30px;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline */
+    width: 20%; 
+    margin: auto;
+  }
+
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    width: 80%; 
+    margin: 0 auto; 
+  }
+
+  .form-row-message {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .form-row-message button {
+    width: 175px; 
+    height: 50px; 
   }
